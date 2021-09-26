@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useState } from 'react';
 
 import api from './services/api';
 
@@ -17,7 +18,7 @@ interface weekDay {
 }
 
 function App() {
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState('london');
   const [fellsLike, setFellsLike] = useState('');
   const [temperature, setTemperature] = useState('');
   const [cityResponse, setCityResponse] = useState('');
@@ -33,6 +34,10 @@ function App() {
   const [wednesday, setWednesday] = useState<weekDay>();
   const [thursday, setThursday] = useState<weekDay>();
   const [friday, setFriday] = useState<weekDay>();
+
+  useEffect(() => {
+    handleSearchForWeather()
+  }, [])
 
   async function handleSearchForWeather() {
     const response = await api.get('find', {
@@ -70,6 +75,7 @@ function App() {
           type="text"
           onChange={(e) => setCity(e.target.value)}
           placeholder="search by city"
+          value={city}
         />
         <button onClick={handleSearchForWeather}>
           <FiSearch color="black" size="40" />

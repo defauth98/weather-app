@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-import 'dotenv/config';
-
 const api = axios.create({
   baseURL: 'https://community-open-weather-map.p.rapidapi.com',
   headers: {
