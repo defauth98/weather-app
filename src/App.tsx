@@ -36,8 +36,8 @@ function App() {
   const [friday, setFriday] = useState<weekDay>();
 
   useEffect(() => {
-    handleSearchForWeather()
-  }, [])
+    handleSearchForWeather();
+  }, []);
 
   async function handleSearchForWeather() {
     const response = await api.get('find', {
@@ -69,91 +69,114 @@ function App() {
   }
 
   return (
-    <div className="main-page">
-      <div className="search-box">
+    <div className='main-page'>
+      <div className='search-box'>
         <input
-          type="text"
+          type='text'
           onChange={(e) => setCity(e.target.value)}
-          placeholder="search by city"
+          placeholder='search by city'
           value={city}
         />
         <button onClick={handleSearchForWeather}>
-          <FiSearch color="black" size="40" />
+          <FiSearch color='black' size='40' />
         </button>
       </div>
 
-      <div className="current-weather">
-        <div className="current-day">
+      <div className='current-weather'>
+        <div className='current-day'>
           <h2>Current weather</h2>
-          <h3>{cityResponse}</h3>
 
-          <div className="weather">
-            <img
-              src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
-              alt="weather-condition"
-            />
-            <span>{temperature}º</span>
-          </div>
+          {cityResponse && (
+            <>
+              <h3>{cityResponse}</h3>
 
-          <span>{weather}</span>
+              <div className='weather'>
+                <img
+                  src={`https://openweathermap.org/img/wn/${icon}@2x.png`}
+                  alt='weather-condition'
+                />
+                <span>{temperature}º</span>
+              </div>
+
+              <span>{weather}</span>
+            </>
+          )}
         </div>
 
-        <div className="current-info">
-          <span>Fells like {fellsLike}º</span>
-          <div className="temperature">
-            <div className="max">
-              <ImArrowUp />
-              {maxTemperature}º
-            </div>
-            <div className="min">
-              <ImArrowDown />
-              {minTemperature}º
-            </div>
-          </div>
-          <div className="infos">
-            <span>
-              Humidity <strong>{humidity}%</strong>
-            </span>
-            <span>
-              Presure <strong>{pressure}hPa</strong>
-            </span>
-          </div>
+        <div className='current-info'>
+          {fellsLike && (
+            <>
+              <span>Fells like {fellsLike}º</span>
+              <div className='temperature'>
+                <div className='max'>
+                  <ImArrowUp />
+                  {maxTemperature}º
+                </div>
+                <div className='min'>
+                  <ImArrowDown />
+                  {minTemperature}º
+                </div>
+              </div>
+              <div className='infos'>
+                <span>
+                  Humidity <strong>{humidity}%</strong>
+                </span>
+                <span>
+                  Presure <strong>{pressure}hPa</strong>
+                </span>
+              </div>
+            </>
+          )}
         </div>
       </div>
-      <div className="week-info">
+      <div className='week-info'>
         <h2>Extended Forecast</h2>
 
-        <div className="week-days">
-          <div className="day">
-            <span>Mon</span>
-            <TiWeatherStormy color="white" size="20" />
-            <span>{`${monday?.weather[0].main}`}</span>
-            <span>{`${monday?.main.temp_max}º/${monday?.main.temp_min}º`}</span>
-          </div>
-          <div className="day">
-            <span>Tue</span>
-            <TiWeatherStormy color="white" size="20" />
-            <span>{`${tuesday?.weather[0].main}`}</span>
-            <span>{`${tuesday?.main.temp_max}º/${tuesday?.main.temp_min}º`}</span>
-          </div>
-          <div className="day">
-            <span>Wed</span>
-            <TiWeatherStormy color="white" size="20" />
-            <span>{`${wednesday?.weather[0].main}`}</span>
-            <span>{`${wednesday?.main.temp_max}º/${wednesday?.main.temp_min}º`}</span>
-          </div>
-          <div className="day">
-            <span>Thur</span>
-            <TiWeatherStormy color="white" size="20" />
-            <span>{`${thursday?.weather[0].main}`}</span>
-            <span>{`${thursday?.main.temp_max}º/${thursday?.main.temp_min}º`}</span>
-          </div>
-          <div className="day">
-            <span>Fri</span>
-            <TiWeatherStormy color="white" size="20" />
-            <span>{`${friday?.weather[0].main}`}</span>
-            <span>{`${friday?.main.temp_max}º/${friday?.main.temp_min}º`}</span>
-          </div>
+        <div className='week-days'>
+          {monday?.weather && (
+            <div className='day'>
+              <span>Mon</span>
+              <TiWeatherStormy color='white' size='20' />
+              <span>{`${monday?.weather[0].main}`}</span>
+              <span>{`${monday?.main.temp_max}º/${monday?.main.temp_min}º`}</span>
+            </div>
+          )}
+
+          {tuesday?.weather && (
+            <div className='day'>
+              <span>Tue</span>
+              <TiWeatherStormy color='white' size='20' />
+              <span>{`${tuesday?.weather[0].main}`}</span>
+              <span>{`${tuesday?.main.temp_max}º/${tuesday?.main.temp_min}º`}</span>
+            </div>
+          )}
+
+          {wednesday?.weather && (
+            <div className='day'>
+              <span>Wed</span>
+              <TiWeatherStormy color='white' size='20' />
+              <span>{`${wednesday?.weather[0].main}`}</span>
+              <span>{`${wednesday?.main.temp_max}º/${wednesday?.main.temp_min}º`}</span>
+            </div>
+          )}
+
+          {thursday?.weather && (
+            <div className='day'>
+              <span>Thur</span>
+              <TiWeatherStormy color='white' size='20' />
+              <span>{`${thursday?.weather[0].main}`}</span>
+              <span>{`${thursday?.main.temp_max}º/${thursday?.main.temp_min}º`}</span>
+            </div>
+          )}
+
+          {friday?.weather && (
+            <div className='day'>
+              <span>Fri</span>
+              <TiWeatherStormy color='white' size='20' />
+              <span>{`${friday?.weather[0].main}`}</span>
+              <span>{`${friday?.main.temp_max}º/${friday?.main.temp_min}º`}</span>
+            </div>
+          )}
         </div>
       </div>
     </div>
