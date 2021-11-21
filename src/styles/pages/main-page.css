@@ -183,17 +183,17 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 
   display: flex;
-  
+
   flex-direction: column;
 }
 
 .main-page .week-info .week-days {
   display: flex;
-  
+
   margin-top: 20px;
 
   justify-content: space-between;
-} 
+}
 
 .main-page .week-info h2 {
   font-size: 20px;
@@ -217,4 +217,13 @@
 .main-page .week-info .week-days .day svg {
   width: 50px;
   height: 50px;
+}
+
+.loading-container {
+  width: 200px;
+  height: 200px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

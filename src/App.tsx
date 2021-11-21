@@ -8,6 +8,7 @@ import { TiWeatherStormy } from 'react-icons/ti';
 import { ImArrowUp, ImArrowDown } from 'react-icons/im';
 
 import './styles/pages/main-page.css';
+import Loading from './compoenents/Loading';
 
 interface weekDay {
   main: {
@@ -101,6 +102,12 @@ function App() {
               <span>{weather}</span>
             </>
           )}
+
+          {!cityResponse && (
+            <div className='loading-container'>
+              <Loading width={20} height={20} type='spin' color='darkblue' />
+            </div>
+          )}
         </div>
 
         <div className='current-info'>
@@ -126,6 +133,12 @@ function App() {
                 </span>
               </div>
             </>
+          )}
+
+          {!fellsLike && (
+            <div className='loading-container'>
+              <Loading width={20} height={20} type='spin' color='darkblue' />
+            </div>
           )}
         </div>
       </div>
