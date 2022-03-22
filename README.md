@@ -1,6 +1,6 @@
 <h1 align="center">Weather App :cloud:</h1>
 
-> Web App que consome uma api de previsão do tempo
+Web App que consome uma api de previsão do tempo
 
 [Clique aqui para acessar a API](https://rapidapi.com/community/api/open-weather-map)
 
@@ -45,9 +45,3 @@ yarn start
 - Twitter: [@defauth8](https://twitter.com/defauth8)
 - Github: [@defauth98](https://github.com/defauth98)
 - LinkedIn: [@daniel-ribeiro-397604164](https://linkedin.com/in/daniel-ribeiro-397604164)
-
-## Licença
-
-The [MIT License]() (MIT)
-
-Copyright :copyright: 2020 - Weather App
